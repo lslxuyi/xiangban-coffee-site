@@ -1,0 +1,19 @@
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo a {
+    display: block;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 48px; /* 控制logo高度，和导航栏高度匹配 */
+    width: auto; /* 宽度自动，保持原始比例 */
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05); /* 鼠标悬停轻微放大效果 */
+}
