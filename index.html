@@ -25,28 +25,74 @@
         .cta { background: #D4AF37; color: #1A1512; padding: 0.5rem 1.2rem; border-radius: 4px; font-weight: 600; text-decoration: none; }
         .cta:hover { background: #C4A030; color: #1A1512; }
 
-        /* 语言切换按钮样式 */
-        .lang-switch {
+        /* 下拉式语言选择器样式 */
+        .lang-dropdown {
             position: absolute;
-            top: 50%;
             right: 0;
+            top: 50%;
             transform: translateY(-50%);
-            display: flex;
-            gap: 0.4rem;
         }
-        html[dir="rtl"] .lang-switch { right: auto; left: 0; }
-        .lang-btn {
+        html[dir="rtl"] .lang-dropdown {
+            right: auto;
+            left: 0;
+        }
+
+        .lang-toggle {
             background: transparent;
             border: 1px solid rgba(242, 228, 213, 0.3);
             color: #F2E4D5;
-            padding: 0.25rem 0.5rem;
+            padding: 0.3rem 0.6rem;
             border-radius: 4px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: all 0.3s;
         }
-        .lang-btn.active, .lang-btn:hover {
+        .lang-toggle:hover,
+        .lang-toggle.active {
             background: #D4AF37;
             color: #1A1512;
             border-color: #D4AF37;
+        }
+
+        .lang-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            background: #1A1512;
+            border: 1px solid rgba(242, 228, 213, 0.1);
+            border-radius: 4px;
+            display: none;
+            flex-direction: column;
+            min-width: 120px;
+            z-index: 1001;
+        }
+        html[dir="rtl"] .lang-menu {
+            right: auto;
+            left: 0;
+        }
+
+        .lang-menu.open {
+            display: flex;
+        }
+
+        .lang-option {
+            background: transparent;
+            border: none;
+            color: #F2E4D5;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .lang-option:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: #D4AF37;
+        }
+        .lang-option.active {
+            color: #D4AF37;
         }
 
         .hero { min-height: 90vh; display: flex; align-items: center; justify-content: center; padding: 2rem 5%; background: linear-gradient(rgba(26, 21, 18, 0.85), rgba(26, 21, 18, 0.85)), url('https://picsum.photos/id/1060/1920/1080') center/cover no-repeat; text-align: center; }
@@ -71,7 +117,7 @@
         .whatsapp-btn { display: inline-block; background: #25D366; color: white; padding: 0.8rem 2rem; border-radius: 4px; text-decoration: none; font-weight: 600; margin-top: 1rem; }
         footer { background: #15110E; padding: 2rem 5%; text-align: center; color: rgba(242, 228, 213, 0.5); font-size: 0.9rem; }
         @media (max-width: 768px) {
-            .lang-switch { position: static; transform: none; margin-top: 10px; justify-content: center; }
+            .lang-dropdown { position: static; transform: none; margin-top: 10px; justify-content: center; }
             nav { flex-wrap: wrap; gap: 10px; }
             .hero h1 { font-size: 2rem; }
         }
@@ -88,11 +134,17 @@
             </ul>
             <a href="#contact" class="cta" data-i18n="ctaCustom">预约定制</a>
 
-            <!-- 语言切换按钮 -->
-            <div class="lang-switch">
-                <button class="lang-btn active" data-lang="zh">中</button>
-                <button class="lang-btn" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="ar">ع</button>
+            <!-- 下拉式语言选择器 -->
+            <div class="lang-dropdown">
+                <button class="lang-toggle">
+                    <span class="current-lang">中</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="lang-menu">
+                    <button class="lang-option" data-lang="zh">中文</button>
+                    <button class="lang-option" data-lang="en">English</button>
+                    <button class="lang-option" data-lang="ar">العربية</button>
+                </div>
             </div>
         </nav>
     </header>
