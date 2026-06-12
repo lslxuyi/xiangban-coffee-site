@@ -5,19 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>香伴咖啡 | 手作咖啡器具</title>
     <meta name="description" content="手工打造手摇咖啡磨豆机，微米级精密装配，每一台都是独一无二的咖啡伴侣">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- 阿里普惠字体CDN：国内、中东、全球访问均稳定，替代谷歌字体 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.alibabagroup.com/css?family=Noto+Serif+SC:wght@300;400;600&display=swap">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Serif SC', serif; background: #1A1512; color: #F2E4D5; line-height: 1.8; font-weight: 300; }
+        body {
+            font-family: 'Noto Serif SC', "Microsoft Yahei", sans-serif;
+            background: #1A1512;
+            color: #F2E4D5;
+            line-height: 1.8;
+            font-weight: 300;
+        }
         
-        /* 阿拉伯语仅文字右对齐，布局保持稳定 */
         html[dir="rtl"] body { text-align: right; }
         html[dir="rtl"] .feature-card p,
         html[dir="rtl"] .contact-info p { text-align: right; }
 
-        header { background: rgba(26, 21, 18, 0.97); padding: 1.2rem 5%; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(242, 228, 213, 0.08); backdrop-filter: blur(8px); }
+        header {
+            background: rgba(26, 21, 18, 0.97);
+            padding: 1.2rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(242, 228, 213, 0.08);
+            backdrop-filter: blur(8px);
+        }
         
         nav { 
             max-width: 1200px; 
@@ -44,7 +57,6 @@
             flex-direction: row-reverse !important;
         }
 
-        /* 品牌名容器，用于定位TM标 */
         .logo { 
             position: relative;
             font-size: 1.3rem; 
@@ -53,7 +65,6 @@
             white-space: nowrap; 
             letter-spacing: 0.1em; 
         }
-        /* 右上角TM角标 */
         .logo .tm-mark {
             position: absolute;
             top: -0.3em;
@@ -65,11 +76,17 @@
         }
 
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-        .nav-links a { color: #F2E4D5; text-decoration: none; transition: color 0.3s; white-space: nowrap; font-weight: 400; letter-spacing: 0.05em; }
+        .nav-links a {
+            color: #F2E4D5;
+            text-decoration: none;
+            transition: color 0.3s;
+            white-space: nowrap;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
         .nav-links a:hover { color: #D4AF37; }
 
         .lang-dropdown { position: relative; }
-
         .lang-toggle {
             background: transparent;
             border: 1px solid rgba(242, 228, 213, 0.25);
@@ -109,10 +126,7 @@
             right: auto;
             left: 0;
         }
-
-        .lang-menu.open {
-            display: flex;
-        }
+        .lang-menu.open { display: flex; }
 
         .lang-option {
             background: transparent;
@@ -130,62 +144,64 @@
             background: rgba(212, 175, 55, 0.1);
             color: #D4AF37;
         }
-        .lang-option.active {
-            color: #D4AF37;
-        }
+        .lang-option.active { color: #D4AF37; }
 
-        .hero { min-height: 92vh; display: flex; align-items: center; justify-content: center; padding: 2rem 5%; background: linear-gradient(rgba(26, 21, 18, 0.88), rgba(26, 21, 18, 0.88)), url('https://picsum.photos/id/1060/1920/1080') center/cover no-repeat; text-align: center; }
+        /* CSS渐变背景，无外部图片，全球通用 */
+        .hero {
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 5%;
+            background: linear-gradient(rgba(26, 21, 18, 0.92), rgba(26, 21, 18, 0.92)),
+                        linear-gradient(#2B221C, #1A1512);
+            text-align: center;
+        }
         .hero-content { max-width: 900px; }
-        .hero h1 { 
-            font-size: 3.4rem; 
-            margin-bottom: 1.5rem; 
-            color: #F2E4D5; 
-            font-weight: 600; 
+        .hero h1 {
+            font-size: 3.4rem;
+            margin-bottom: 1.5rem;
+            color: #F2E4D5;
+            font-weight: 600;
             letter-spacing: 0.08em;
             line-height: 1.4;
-            transform: translateY(-1em); /* 标题上移一倍字宽 */
+            transform: translateY(-1em);
         }
 
-        /* 两行描述文字：紧凑正常行距，取消额外上下边距 */
-        .hero p { 
-            font-size: 1.2rem; 
-            color: rgba(242, 228, 213, 0.8); 
-            font-weight: 300; 
-            letter-spacing: 0.05em; 
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(242, 228, 213, 0.8);
+            font-weight: 300;
+            letter-spacing: 0.05em;
             line-height: 1.4;
             margin: 0;
         }
-        /* 仅第一行描述底部留小间距 */
-        .hero p:first-of-type {
-            margin-bottom: 0.3rem;
-        }
-        /* 描述整体与按钮缩小间距，按钮上移 */
-        .hero-buttons { 
-            display: flex; 
-            gap: 1.2rem; 
-            justify-content: center; 
+        .hero p:first-of-type { margin-bottom: 0.3rem; }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
             flex-wrap: wrap;
             margin-top: 1.8rem;
         }
-        /* 两个按钮统一为金色填充样式 */
-        .btn { 
-            padding: 0.9rem 2.2rem; 
-            border-radius: 4px; 
-            text-decoration: none; 
-            font-weight: 400; 
-            transition: all 0.3s; 
-            letter-spacing: 0.05em; 
+        .btn {
+            padding: 0.9rem 2.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.3s;
+            letter-spacing: 0.05em;
             font-size: 1rem;
             background: #D4AF37;
             color: #1A1512;
             border: none;
         }
-        .btn:hover { 
-            background: #C4A030; 
-            transform: translateY(-2px); 
+        .btn:hover {
+            background: #C4A030;
+            transform: translateY(-2px);
         }
 
-        /* 响应式适配 */
         @media (max-width: 1200px) {
             .hero h1 { font-size: 2.8rem; }
         }
@@ -193,24 +209,6 @@
             .hero h1 { font-size: 2.2rem; }
             .hero p { font-size: 1.1rem; }
             .btn { padding: 0.8rem 1.8rem; font-size: 0.95rem; }
-        }
-
-        .features { padding: 6rem 5%; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 4rem; }
-        .section-title h2 { font-size: 2.2rem; color: #D4AF37; margin-bottom: 0.8rem; font-weight: 600; letter-spacing: 0.05em; }
-        .section-title p { font-size: 1.1rem; color: rgba(242, 228, 213, 0.7); font-weight: 300; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
-        .feature-card { background: rgba(242, 228, 213, 0.04); padding: 2.5rem 2rem; border-radius: 8px; text-align: center; border: 1px solid rgba(242, 228, 213, 0.08); transition: all 0.3s; }
-        .feature-card:hover { transform: translateY(-5px); border-color: rgba(212, 175, 55, 0.2); }
-        .feature-card h3 { color: #D4AF37; margin: 1.2rem 0 1rem 0; font-size: 1.3rem; font-weight: 600; letter-spacing: 0.03em; }
-        .feature-card p { color: rgba(242, 228, 213, 0.8); line-height: 1.7; font-weight: 300; }
-        .contact { padding: 6rem 5%; background: rgba(242, 228, 213, 0.02); text-align: center; }
-        .contact-info { max-width: 650px; margin: 0 auto; }
-        .contact-info p { margin-bottom: 1.2rem; color: rgba(242, 228, 213, 0.8); font-weight: 300; font-size: 1.05rem; }
-        .whatsapp-btn { display: inline-block; background: #25D366; color: white; padding: 0.9rem 2.2rem; border-radius: 4px; text-decoration: none; font-weight: 400; margin-top: 1.5rem; transition: all 0.3s; letter-spacing: 0.05em; }
-        .whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); }
-        footer { background: #15110E; padding: 2.5rem 5%; text-align: center; color: rgba(242, 228, 213, 0.5); font-size: 0.95rem; font-weight: 300; border-top: 1px solid rgba(242, 228, 213, 0.05); }
-        @media (max-width: 768px) {
             nav { flex-wrap: wrap; justify-content: center; gap: 1.2rem; }
             .nav-center { order: 3; width: 100%; justify-content: center; }
             .nav-left, .nav-right { order: 1; }
@@ -219,6 +217,89 @@
             html[dir="rtl"] .lang-menu { left: 50%; transform: translateX(-50%); }
             .section-title h2 { font-size: 1.8rem; }
         }
+
+        .features { padding: 6rem 5%; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 4rem; }
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #D4AF37;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        .section-title p {
+            font-size: 1.1rem;
+            color: rgba(242, 228, 213, 0.7);
+            font-weight: 300;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+        .feature-card {
+            background: rgba(242, 228, 213, 0.04);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(242, 228, 213, 0.08);
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+        .feature-card h3 {
+            color: #D4AF37;
+            margin: 1.2rem 0 1rem 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+        .feature-card p {
+            color: rgba(242, 228, 213, 0.8);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .contact {
+            padding: 6rem 5%;
+            background: rgba(242, 228, 213, 0.02);
+            text-align: center;
+        }
+        .contact-info { max-width: 650px; margin: 0 auto; }
+        .contact-info p {
+            margin-bottom: 1.2rem;
+            color: rgba(242, 228, 213, 0.8);
+            font-weight: 300;
+            font-size: 1.05rem;
+        }
+        .whatsapp-btn {
+            display: inline-block;
+            background: #25D366;
+            color: #fff;
+            padding: 0.9rem 2.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 400;
+            margin-top: 1.5rem;
+            transition: all 0.3s;
+            letter-spacing: 0.05em;
+        }
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        footer {
+            background: #15110E;
+            padding: 2.5rem 5%;
+            text-align: center;
+            color: rgba(242, 228, 213, 0.5);
+            font-size: 0.95rem;
+            font-weight: 300;
+            border-top: 1px solid rgba(242, 228, 213, 0.05);
+        }
     </style>
 </head>
 <body>
@@ -226,7 +307,6 @@
         <nav>
             <div class="nav-left">
                 <div class="logo">
-                    <!-- 仅文字部分绑定国际化，TM标签独立不受语言切换影响 -->
                     <span data-i18n="siteTitle">香伴咖啡</span>
                     <span class="tm-mark">™</span>
                 </div>
@@ -318,89 +398,47 @@
     <script>
         const i18n = {
             zh: {
-                siteTitle: "香伴咖啡",
-                navHome: "首页",
-                navCraft: "手作工艺",
-                navContact: "联系我们",
-                heroTitle: "手工磨豆机. 为咖啡注入温度",
-                heroDesc1: "每一台都由匠人手工装配调校，用时间打磨细节",
-                heroDesc2: "让咖啡的香气更纯粹",
-                btnExplore: "了解工艺",
-                btnCustom: "定制咨询",
-                featuresTitle: "手作匠心",
-                featuresSub: "拒绝流水线量产，坚持每一台都手工完成",
-                feature1Title: "手工研磨锥刀",
-                feature1Desc: "48mm高碳钢锥刀，手工开刃打磨，每一片刀刃都经过反复测试，研磨均匀细腻",
-                feature2Title: "微米级手工装配",
-                feature2Desc: "核心部件手工校准，公差控制在0.005毫米以内，运转顺滑无杂音，使用寿命更长",
-                feature3Title: "单台风味调校",
-                feature3Desc: "每台机器出厂前都经过实际冲煮测试，附带专属风味参数，到手即可享受好咖啡",
-                feature4Title: "全铝手工打磨机身",
-                feature4Desc: "6061-T6航空级铝合金，手工抛光打磨，触感温润，越用越有质感",
-                feature5Title: "专属定制刻字",
-                feature5Desc: "支持姓名、短句、Logo激光雕刻，打造独属于你的咖啡器具，也是心意满满的礼物",
-                feature6Title: "终身维护服务",
-                feature6Desc: "提供刀盘更换、机身保养、精度校准等终身服务，让你的磨豆机陪伴你更久",
-                contactTitle: "联系我们",
-                contactSub: "有任何问题或定制需求，随时和我们聊聊",
+                siteTitle: "香伴咖啡", navHome: "首页", navCraft: "手作工艺", navContact: "联系我们",
+                heroTitle: "手工磨豆机. 为咖啡注入温度", heroDesc1: "每一台都由匠人手工装配调校，用时间打磨细节", heroDesc2: "让咖啡的香气更纯粹",
+                btnExplore: "了解工艺", btnCustom: "定制咨询",
+                featuresTitle: "手作匠心", featuresSub: "拒绝流水线量产，坚持每一台都手工完成",
+                feature1Title: "手工研磨锥刀", feature1Desc: "48mm高碳钢锥刀，手工开刃打磨，每一片刀刃都经过反复测试，研磨均匀细腻",
+                feature2Title: "微米级手工装配", feature2Desc: "核心部件手工校准，公差控制在0.005毫米以内，运转顺滑无杂音，使用寿命更长",
+                feature3Title: "单台风味调校", feature3Desc: "每台机器出厂前都经过实际冲煮测试，附带专属风味参数，到手即可享受好咖啡",
+                feature4Title: "全铝手工打磨机身", feature4Desc: "6061-T6航空级铝合金，手工抛光打磨，触感温润，越用越有质感",
+                feature5Title: "专属定制刻字", feature5Desc: "支持姓名、短句、Logo激光雕刻，打造独属于你的咖啡器具，也是心意满满的礼物",
+                feature6Title: "终身维护服务", feature6Desc: "提供刀盘更换、机身保养、精度校准等终身服务，让你的磨豆机陪伴你更久",
+                contactTitle: "联系我们", contactSub: "有任何问题或定制需求，随时和我们聊聊",
                 contactAddress: "工作室：中国广东顺德",
                 copyright: "&copy; 2024 香伴咖啡 | 手作咖啡器具工作室"
             },
             en: {
-                siteTitle: "Xiangban Coffee",
-                navHome: "Home",
-                navCraft: "Craftsmanship",
-                navContact: "Contact",
-                heroTitle: "Handcrafted Grinders. Warmth for Coffee",
-                heroDesc1: "Each grinder is assembled and calibrated by hand, polished with dedication",
-                heroDesc2: "Bring out the pure aroma of coffee",
-                btnExplore: "Our Craft",
-                btnCustom: "Custom Order",
-                featuresTitle: "Artisan Craft",
-                featuresSub: "No mass production, every piece is made by hand",
-                feature1Title: "Hand-ground Burrs",
-                feature1Desc: "48mm high-carbon steel burrs, hand-sharpened and tested for uniform, consistent grinding",
-                feature2Title: "Micron-precision Assembly",
-                feature2Desc: "Core parts calibrated by hand, tolerance within 0.005mm, smooth operation and long life",
-                feature3Title: "Individual Flavor Tuning",
-                feature3Desc: "Each unit tested with actual brewing, comes with personalized flavor settings",
-                feature4Title: "Hand-polished Aluminum Body",
-                feature4Desc: "6061-T6 aerospace aluminum, hand-polished for a warm, tactile feel that ages beautifully",
-                feature5Title: "Personalized Engraving",
-                feature5Desc: "Custom names, quotes or logos available, perfect for personal use or thoughtful gifts",
-                feature6Title: "Lifetime Care",
-                feature6Desc: "Burr replacement, maintenance and calibration services available for life",
-                contactTitle: "Get in Touch",
-                contactSub: "Have questions or want a custom grinder? We'd love to hear from you",
+                siteTitle: "Xiangban Coffee", navHome: "Home", navCraft: "Craftsmanship", navContact: "Contact",
+                heroTitle: "Handcrafted Grinders. Warmth for Coffee", heroDesc1: "Each grinder is assembled and calibrated by hand, polished with dedication", heroDesc2: "Bring out the pure aroma of coffee",
+                btnExplore: "Our Craft", btnCustom: "Custom Order",
+                featuresTitle: "Artisan Craft", featuresSub: "No mass production, every piece is made by hand",
+                feature1Title: "Hand-ground Burrs", feature1Desc: "48mm high-carbon steel burrs, hand-sharpened and tested for uniform, consistent grinding",
+                feature2Title: "Micron-precision Assembly", feature2Desc: "Core parts calibrated by hand, tolerance within 0.005mm, smooth operation and long life",
+                feature3Title: "Individual Flavor Tuning", feature3Desc: "Each unit tested with actual brewing, comes with personalized flavor settings",
+                feature4Title: "Hand-polished Aluminum Body", feature4Desc: "6061-T6 aerospace aluminum, hand-polished for a warm, tactile feel that ages beautifully",
+                feature5Title: "Personalized Engraving", feature5Desc: "Custom names, quotes or logos available, perfect for personal use or thoughtful gifts",
+                feature6Title: "Lifetime Care", feature6Desc: "Burr replacement, maintenance and calibration services available for life",
+                contactTitle: "Get in Touch", contactSub: "Have questions or want a custom grinder? We'd love to hear from you",
                 contactAddress: "Studio: Shunde, Guangdong, China",
                 copyright: "&copy; 2024 Xiangban Coffee | Handcrafted Coffee Tools Studio"
             },
             ar: {
-                siteTitle: "قهوة شيانجبان",
-                navHome: "الرئيسية",
-                navCraft: "الحرف اليدوية",
-                navContact: "اتصل بنا",
-                heroTitle: "مطاحن يدوية. دفء للقهوة",
-                heroDesc1: "كل مطحنة تُجمّع وتُعاير يدوياً بعناية فائقة",
-                heroDesc2: "لتُبرز رائحة القهوة النقية",
-                btnExplore: "حرفتنا",
-                btnCustom: "طلب مخصص",
-                featuresTitle: "حرفية فنية",
-                featuresSub: "لا إنتاج جماعي، كل قطعة مصنوعة يدوياً",
-                feature1Title: "سنون مطحونة يدوياً",
-                feature1Desc: "سنون فولاذ عالي الكربون مقاس 48 مم، مصقولة ومختبرة يدوياً لطحن متجانس ومستمر",
-                feature2Title: "تجميع دقيق ميكروني",
-                feature2Desc: "الأجزاء الأساسية معايرة يدوياً، تفاوت أقل من 0.005 مم، تشغيل سلس وعمر طويل",
-                feature3Title: "معايرة نكهة فردية",
-                feature3Desc: "كل جهاز يتم اختباره بالتحضير الفعلي، يأتي مع إعدادات نكهة مخصصة",
-                feature4Title: "جسم ألومنيوم مصقول يدوياً",
-                feature4Desc: "ألومنيوم طائرات 6061-T6، مصقول يدوياً لمسة دافئة تتحسن مع الوقت",
-                feature5Title: "نقش شخصي",
-                feature5Desc: "نقش الأسماء أو الشعارات متاح، مثالي للاستخدام الشخصي أو الهدايا",
-                feature6Title: "رعاية مدى الحياة",
-                feature6Desc: "خدمات استبدال السنون والصيانة والمعايرة متاحة مدى الحياة",
-                contactTitle: "تواصل معنا",
-                contactSub: "لديك أسئلة أو تريد مطحنة مخصصة؟ يسعدنا سماعك",
+                siteTitle: "قهوة شيانجبان", navHome: "الرئيسية", navCraft: "الحرف اليدوية", navContact: "اتصل بنا",
+                heroTitle: "مطاحن يدوية. دفء للقهوة", heroDesc1: "كل مطحنة تُجمّع وتُعاير يدوياً بعناية فائقة", heroDesc2: "لتُبرز رائحة القهوة النقية",
+                btnExplore: "حرفتنا", btnCustom: "طلب مخصص",
+                featuresTitle: "حرفية فنية", featuresSub: "لا إنتاج جماعي، كل قطعة مصنوعة يدوياً",
+                feature1Title: "سنون مطحونة يدوياً", feature1Desc: "سنون فولاذ عالي الكربون مقاس 48 مم، مصقولة ومختبرة يدوياً لطحن متجانس ومستمر",
+                feature2Title: "تجميع دقيق ميكروني", feature2Desc: "الأجزاء الأساسية معايرة يدوياً، تفاوت أقل من 0.005 مم، تشغيل سلس وعمر طويل",
+                feature3Title: "معايرة نكهة فردية", feature3Desc: "كل جهاز يتم اختباره بالتحضير الفعلي، يأتي مع إعدادات نكهة مخصصة",
+                feature4Title: "جسم ألومنيوم مصقول يدوياً", feature4Desc: "ألومنيوم طائرات 6061-T6، مصقول يدوياً لمسة دافئة تتحسن مع الوقت",
+                feature5Title: "نقش شخصي", feature5Desc: "نقش الأسماء أو الشعارات متاح، مثالي للاستخدام الشخصي أو الهدايا",
+                feature6Title: "رعاية مدى الحياة", feature6Desc: "خدمات استبدال السنون والصيانة والمعايرة متاحة مدى الحياة",
+                contactTitle: "تواصل معنا", contactSub: "لديك أسئلة أو تريد مطحنة مخصصة؟ يسعدنا سماعك",
                 contactAddress: "الاستوديو: شوند، قوانغدونغ، الصين",
                 copyright: "&copy; 2024 قهوة شيانجبان | استوديو أدوات القهوة المصنوعة يدوياً"
             }
@@ -416,10 +454,7 @@
             e.stopPropagation();
             langMenu.classList.toggle('open');
         });
-
-        document.addEventListener('click', () => {
-            langMenu.classList.remove('open');
-        });
+        document.addEventListener('click', () => langMenu.classList.remove('open'));
 
         langOptions.forEach(option => {
             option.addEventListener('click', () => {
@@ -437,13 +472,10 @@
             });
         });
 
-        // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
         });
     </script>
