@@ -167,7 +167,7 @@
             flex-wrap: wrap;
             margin-top: 1.8rem;
         }
-        /* 两个按钮统一为填充样式 */
+        /* 两个按钮统一为金色填充样式 */
         .btn { 
             padding: 0.9rem 2.2rem; 
             border-radius: 4px; 
@@ -225,8 +225,9 @@
     <header>
         <nav>
             <div class="nav-left">
-                <div class="logo" data-i18n="siteTitle">
-                    香伴咖啡
+                <div class="logo">
+                    <!-- 仅文字部分绑定国际化，TM标签独立不受语言切换影响 -->
+                    <span data-i18n="siteTitle">香伴咖啡</span>
                     <span class="tm-mark">™</span>
                 </div>
             </div>
