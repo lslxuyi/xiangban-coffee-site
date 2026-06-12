@@ -3,54 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>相伴咖啡 | 手冲器具手作</title>
+    <title>香伴咖啡 | 手冲器具手作</title>
     <meta name="description" content="自研手摇磨豆机 · 精密加工 · 个性化刻字 · 器具定制">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- 国内可稳定访问的阿里巴巴普惠体（免费商用） -->
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_3248136_759f0v0v0hj.css">
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Serif SC', serif; background: #1A1512; color: #F2E4D5; line-height: 1.6; }
-        header { background: rgba(26, 21, 18, 0.95); padding: 1rem 5%; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(242, 228, 213, 0.1); }
-        nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.2rem; font-weight: 600; color: #D4AF37; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { color: #F2E4D5; text-decoration: none; transition: color 0.3s; }
-        .nav-links a:hover { color: #D4AF37; }
-        .cta { background: #D4AF37; color: #1A1512; padding: 0.5rem 1.2rem; border-radius: 4px; font-weight: 600; text-decoration: none; }
-        .cta:hover { background: #C4A030; color: #1A1512; }
-        .hero { min-height: 90vh; display: flex; align-items: center; justify-content: center; padding: 2rem 5%; background: linear-gradient(rgba(26, 21, 18, 0.85), rgba(26, 21, 18, 0.85)), url('https://picsum.photos/id/1060/1920/1080') center/cover no-repeat; text-align: center; }
-        .hero-content { max-width: 800px; }
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; color: #F2E4D5; line-height: 1.3; }
-        .hero p { font-size: 1.2rem; margin-bottom: 2rem; color: rgba(242, 228, 213, 0.8); }
-        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn { padding: 0.8rem 2rem; border-radius: 4px; text-decoration: none; font-weight: 600; transition: all 0.3s; }
-        .btn-primary { background: #D4AF37; color: #1A1512; }
-        .btn-primary:hover { background: #C4A030; }
-        .btn-secondary { border: 1px solid #D4AF37; color: #D4AF37; }
-        .btn-secondary:hover { background: rgba(212, 175, 55, 0.1); }
-        .features { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 3rem; }
-        .section-title h2 { font-size: 2rem; color: #D4AF37; margin-bottom: 0.5rem; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-        .feature-card { background: rgba(242, 228, 213, 0.05); padding: 2rem; border-radius: 8px; text-align: center; border: 1px solid rgba(242, 228, 213, 0.1); }
-        .feature-card h3 { color: #D4AF37; margin: 1rem 0; }
-        .contact { padding: 5rem 5%; background: rgba(242, 228, 213, 0.03); text-align: center; }
-        .contact-info { max-width: 600px; margin: 0 auto; }
-        .contact-info p { margin-bottom: 1rem; color: rgba(242, 228, 213, 0.8); }
-        .whatsapp-btn { display: inline-block; background: #25D366; color: white; padding: 0.8rem 2rem; border-radius: 4px; text-decoration: none; font-weight: 600; margin-top: 1rem; }
-        footer { background: #15110E; padding: 2rem 5%; text-align: center; color: rgba(242, 228, 213, 0.5); font-size: 0.9rem; }
+        
+        /* 字体栈：优先阿里巴巴普惠体，然后系统衬线字体 */
+        body { 
+            font-family: 'Alibaba PuHuiTi', 'Noto Serif SC', 'Microsoft YaHei', serif; 
+            background: #1A1512; 
+            color: #F2E4D5; 
+            line-height: 1.6; 
+        }
+        
+        header { 
+            background: rgba(26, 21, 18, 0.95); 
+            padding: 0 5%; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            border-bottom: 1px solid rgba(242, 228, 213, 0.1); 
+            height: 64px; /* 固定导航栏高度 */
+        }
+        
+        /* 导航栏核心布局：左logo、中菜单、右按钮 */
+        nav { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            height: 100%;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        /* 左侧logo样式 */
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo a {
+            display: block;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            height: 38px; /* 适配导航栏高度 */
+            width: auto;
+            /* 自动将黑色线条logo变成白色，适配深色背景 */
+            filter: brightness(0) invert(1);
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* 中间导航菜单样式 */
+        .nav-links { 
+            display: flex; 
+            gap: 2.5rem; 
+            list-style: none; 
+            align-items: center;
+        }
+        
+        .nav-links a { 
+            color: #F2E4D5; 
+            text-decoration: none; 
+            transition: color 0.3s; 
+            font-size: 1.05rem;
+        }
+        
+        .nav-links a:hover { 
+            color: #D4AF37; 
+        }
+        
+        /* 右侧预约定制按钮样式 */
+        .cta { 
+            background: #D4AF37; 
+            color: #1A1512; 
+            padding: 0.55rem 1.3rem; 
+            border-radius: 4px; 
+            font-weight: 600; 
+            text-decoration: none; 
+            transition: background-color 0.3s;
+        }
+        
+        .cta:hover { 
+            background: #C4A030; 
+            color: #1A1512; 
+        }
+        
+        /* 英雄区：使用本地背景图 */
+        .hero { 
+            min-height: 90vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 2rem 5%; 
+            background: linear-gradient(rgba(26, 21, 18, 0.85), rgba(26, 21, 18, 0.85)), 
+                        url('./images/hero-bg.jpg') center/cover no-repeat; 
+            text-align: center; 
+        }
+        
+        .hero-content { 
+            max-width: 800px; 
+        }
+        
+        .hero h1 { 
+            font-size: 3rem; 
+            margin-bottom: 1rem; 
+            color: #F2E4D5; 
+            line-height: 1.3; 
+            font-weight: 600;
+        }
+        
+        .hero p { 
+            font-size: 1.2rem; 
+            margin-bottom: 2rem; 
+            color: rgba(242, 228, 213, 0.8); 
+        }
+        
+        .hero-buttons { 
+            display: flex; 
+            gap: 1rem; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+        }
+        
+        .btn { 
+            padding: 0.8rem 2rem; 
+            border-radius: 4px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: all 0.3s; 
+        }
+        
+        .btn-primary { 
+            background: #D4AF37; 
+            color: #1A1512; 
+        }
+        
+        .btn-primary:hover { 
+            background: #C4A030; 
+        }
+        
+        .btn-secondary { 
+            border: 1px solid #D4AF37; 
+            color: #D4AF37; 
+        }
+        
+        .btn-secondary:hover { 
+            background: rgba(212, 175, 55, 0.1); 
+        }
+        
+        .features { 
+            padding: 5rem 5%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        
+        .section-title { 
+            text-align: center; 
+            margin-bottom: 3rem; 
+        }
+        
+        .section-title h2 { 
+            font-size: 2rem; 
+            color: #D4AF37; 
+            margin-bottom: 0.5rem; 
+            font-weight: 600;
+        }
+        
+        .features-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 2rem; 
+        }
+        
+        .feature-card { 
+            background: rgba(242, 228, 213, 0.05); 
+            padding: 2rem; 
+            border-radius: 8px; 
+            text-align: center; 
+            border: 1px solid rgba(242, 228, 213, 0.1); 
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 { 
+            color: #D4AF37; 
+            margin: 1rem 0; 
+            font-weight: 600;
+        }
+        
+        .contact { 
+            padding: 5rem 5%; 
+            background: rgba(242, 228, 213, 0.03); 
+            text-align: center; 
+        }
+        
+        .contact-info { 
+            max-width: 600px; 
+            margin: 0 auto; 
+        }
+        
+        .contact-info p { 
+            margin-bottom: 1rem; 
+            color: rgba(242, 228, 213, 0.8); 
+        }
+        
+        /* 联系按钮 */
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        
+        .wechat-btn { 
+            display: inline-block; 
+            background: #07C160; 
+            color: white; 
+            padding: 0.8rem 2rem; 
+            border-radius: 4px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: background-color 0.3s;
+        }
+        
+        .wechat-btn:hover {
+            background: #06b056;
+        }
+        
+        .whatsapp-btn { 
+            display: inline-block; 
+            background: #25D366; 
+            color: white; 
+            padding: 0.8rem 2rem; 
+            border-radius: 4px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: background-color 0.3s;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #20be5a;
+        }
+        
+        footer { 
+            background: #15110E; 
+            padding: 2rem 5%; 
+            text-align: center; 
+            color: rgba(242, 228, 213, 0.5); 
+            font-size: 0.9rem; 
+        }
+        
+        /* 手机端响应式适配 */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">相伴咖啡</div>
+            <!-- 左侧：图片logo -->
+            <div class="logo">
+                <a href="/">
+                    <img src="./images/logo.png" alt="香伴咖啡 logo" class="logo-img">
+                </a>
+            </div>
+            
+            <!-- 中间：导航菜单 -->
             <ul class="nav-links">
                 <li><a href="#home">首页</a></li>
                 <li><a href="#features">产品</a></li>
                 <li><a href="#contact">联系</a></li>
             </ul>
+            
+            <!-- 右侧：预约定制按钮 -->
             <a href="#contact" class="cta">预约定制</a>
         </nav>
     </header>
@@ -98,13 +348,17 @@
         </div>
         <div class="contact-info">
             <p>工作室地址：广东顺德杏坛</p>
-            <p>邮箱：LEE@xiangban-coffee.com</p>
-            <a href="https://wa.me/8613824051191" class="whatsapp-btn">WhatsApp 联系我们</a>
+            <p>邮箱：lee@xiangban-coffee.com</p>
+            <div class="contact-buttons">
+                <!-- 微信按钮：点击打开本地二维码图片 -->
+                <a href="./images/wechat-qr.jpg" class="wechat-btn">微信联系（国内客户）</a>
+                <a href="https://wa.me/8613824051191" class="whatsapp-btn">WhatsApp（海外客户）</a>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 相伴咖啡 | 手冲器具手作工作室</p>
+        <p>&copy; 2025 香伴咖啡 | 手冲器具手作工作室</p>
     </footer>
 </body>
 </html>
