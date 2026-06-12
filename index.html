@@ -11,27 +11,43 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Noto Serif SC', serif; background: #1A1512; color: #F2E4D5; line-height: 1.6; }
+        
+        /* 只保留文字右对齐，不反转任何元素顺序 */
         html[dir="rtl"] body { text-align: right; }
 
         header { background: rgba(26, 21, 18, 0.95); padding: 1rem 5%; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(242, 228, 213, 0.1); }
-        nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
         
-        /* 核心修复：纯flex布局，自动分配空间 */
+        /* 核心修复：强制导航栏永远从左到右排列，禁止浏览器自动反转 */
+        nav { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            gap: 2rem;
+            /* 强制覆盖浏览器在RTL下的自动反转行为 */
+            flex-direction: row !important;
+        }
+
+        /* 三个区域顺序永远不变：左Logo → 中导航 → 右按钮 */
         .nav-left { display: flex; align-items: center; }
         .nav-center { display: flex; align-items: center; gap: 2rem; }
-        .nav-right { display: flex; align-items: center; gap: 1.5rem; }
-        
-        /* RTL自动反转布局顺序 */
-        html[dir="rtl"] nav { flex-direction: row-reverse; }
+        .nav-right { 
+            display: flex; 
+            align-items: center; 
+            gap: 1.5rem;
+            /* 右侧区域也强制不反转 */
+            flex-direction: row !important;
+        }
 
         .logo { font-size: 1.2rem; font-weight: 600; color: #D4AF37; white-space: nowrap; }
         .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { color: #F2E4D5; text-decoration: none; transition: color 0.3s; white-space: nowrap; }
+        .nav-links a { color: #F2E4D5; text-decoration: none; transition: color 0.3; white-space: nowrap; }
         .nav-links a:hover { color: #D4AF37; }
         .cta { background: #D4AF37; color: #1A1512; padding: 0.5rem 1.2rem; border-radius: 4px; font-weight: 600; text-decoration: none; white-space: nowrap; }
         .cta:hover { background: #C4A030; color: #1A1512; }
 
-        /* 下拉式语言选择器（纯flex，无绝对定位） */
+        /* 下拉式语言选择器 */
         .lang-dropdown {
             position: relative;
         }
@@ -69,6 +85,7 @@
             min-width: 120px;
             z-index: 1001;
         }
+        /* RTL时菜单从语言按钮左侧弹出，不会超出屏幕 */
         html[dir="rtl"] .lang-menu {
             right: auto;
             left: 0;
@@ -110,7 +127,6 @@
         .section-title { text-align: center; margin-bottom: 3rem; }
         .section-title h2 { font-size: 2rem; color: #D4AF37; margin-bottom: 0.5rem; }
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-        html[dir="rtl"] .features-grid { direction: rtl; }
         .feature-card { background: rgba(242, 228, 213, 0.05); padding: 2rem; border-radius: 8px; text-align: center; border: 1px solid rgba(242, 228, 213, 0.1); }
         .feature-card h3 { color: #D4AF37; margin: 1rem 0; }
         .contact { padding: 5rem 5%; background: rgba(242, 228, 213, 0.03); text-align: center; }
@@ -132,12 +148,12 @@
 <body>
     <header>
         <nav>
-            <!-- 左侧：Logo -->
+            <!-- 左侧：Logo 永远在最左边 -->
             <div class="nav-left">
-                <div class="logo" data-i18n="siteTitle">香伴咖啡</div>
+                <div class="logo" data-i18n="siteTitle">相伴咖啡</div>
             </div>
 
-            <!-- 中间：导航链接 -->
+            <!-- 中间：导航链接 永远在中间 -->
             <div class="nav-center">
                 <ul class="nav-links">
                     <li><a href="#home" data-i18n="navHome">首页</a></li>
@@ -146,11 +162,11 @@
                 </ul>
             </div>
 
-            <!-- 右侧：CTA按钮 + 语言选择器 -->
+            <!-- 右侧：预约定制 + 语言选择器 永远在最右边 -->
             <div class="nav-right">
                 <a href="#contact" class="cta" data-i18n="ctaCustom">预约定制</a>
                 
-                <!-- 下拉式语言选择器 -->
+                <!-- 语言选择器永远在最右边 -->
                 <div class="lang-dropdown">
                     <button class="lang-toggle">
                         <span class="current-lang">中</span>
@@ -187,7 +203,15 @@
                 <h3 data-i18n="feature1Title">自研锥刀结构</h3>
                 <p data-i18n="feature1Desc">48mm 精密锥刀，均匀出粉，适配手冲、意式多种冲煮方式</p>
             </div>
+           <div class="feature-card">
+                <h3 data-i18n="feature1Title">微米级手工装配</h3>
+                <p data-i18n="feature1Desc">关键部件人工研磨装配，公差≤0.005mm，同轴度误差微乎其微，保证每一刀都精准落粉</p>
+            </div>
             <div class="feature-card">
+                <h3 data-i18n="feature1Title">单台风味标定</h3>
+                <p data-i18n="feature1Desc">每台机器全检 + 长时间风味测试，出厂即附最优参数建议，到手直接用，不用反复调试</p>
+            </div>
+                <div class="feature-card">
                 <h3 data-i18n="feature2Title">全铝合金机身</h3>
                 <p data-i18n="feature2Desc">6061-T6 航空级铝合金，轻量化与质感并存，耐用性拉满</p>
             </div>
@@ -215,7 +239,7 @@
     </section>
 
     <footer>
-        <p data-i18n="copyright">&copy; 2014 香伴咖啡 | 手冲器具手作工作室</p>
+        <p data-i18n="copyright">&copy; 2024 相伴咖啡 | 手冲器具手作工作室</p>
     </footer>
 
     <!-- 引入外部独立JS文件 -->
