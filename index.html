@@ -11,14 +11,14 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Noto Serif SC', serif; background: #1A1512; color: #F2E4D5; line-height: 1.8; font-weight: 300; }
-        
+
         /* 阿拉伯语仅文字右对齐，布局保持稳定 */
         html[dir="rtl"] body { text-align: right; }
         html[dir="rtl"] .feature-card p,
         html[dir="rtl"] .contact-info p { text-align: right; }
 
         header { background: rgba(26, 21, 18, 0.97); padding: 1.2rem 5%; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(242, 228, 213, 0.08); backdrop-filter: blur(8px); }
-        
+
         nav { 
             max-width: 1200px; 
             margin: 0 auto; 
@@ -240,14 +240,14 @@
             </div>
             <div class="nav-right">
                 <div class="lang-dropdown">
-                    <button class="lang-toggle">
+                    <button class="lang-toggle" type="button" aria-expanded="false" aria-label="选择语言">
                         <span class="current-lang">中</span>
                         <span class="arrow">▼</span>
                     </button>
                     <div class="lang-menu">
-                        <button class="lang-option" data-lang="zh">中文</button>
-                        <button class="lang-option" data-lang="en">English</button>
-                        <button class="lang-option" data-lang="ar">العربية</button>
+                        <button class="lang-option" type="button" data-lang="zh">中文</button>
+                        <button class="lang-option" type="button" data-lang="en">English</button>
+                        <button class="lang-option" type="button" data-lang="ar">العربية</button>
                     </div>
                 </div>
             </div>
@@ -307,7 +307,12 @@
         <div class="contact-info">
             <p data-i18n="contactAddress">工作室：中国广东顺德</p>
             <p>邮箱：LEE@xiangban-coffee.com</p>
-            <a href="https://wa.me/8613824051191" class="whatsapp-btn">WhatsApp 联系我们</a>
+            <a
+                href="https://api.whatsapp.com/send?phone=8613824051191"
+                class="whatsapp-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+            >WhatsApp 联系我们</a>
         </div>
     </section>
 
@@ -315,6 +320,6 @@
         <p data-i18n="copyright">&copy; 2024 香伴咖啡 | 手作咖啡器具工作室</p>
     </footer>
 
-<script src="./lang.js" defer></script>
+    <script src="./lang.js" defer></script>
 </body>
 </html>
