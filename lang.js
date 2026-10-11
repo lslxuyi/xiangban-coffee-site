@@ -1,4 +1,8 @@
-// Xiangban Coffee — multilingual support
+
+/* Xiangban Coffee - multilingual support */
+
+"use strict";
+
 const translations = {
     zh: {
         siteTitle: "香伴咖啡",
@@ -96,21 +100,21 @@ function setLanguage(lang) {
         lang = "zh";
     }
 
-    document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
+    const dictionary = translations[lang];
 
-        if (Object.prototype.hasOwnProperty.call(translations[lang], key)) {
-            el.textContent = translations[lang][key];
+    document.querySelectorAll("[data-i18n]").forEach(function (element) {
+        const key = element.getAttribute("data-i18n");
+
+        if (Object.prototype.hasOwnProperty.call(dictionary, key)) {
+            element.textContent = dictionary[key];
         }
     });
 
-    document.documentElement.lang =
-        lang === "zh" ? "zh-CN" : lang;
-
-    document.documentElement.dir =
-        lang === "ar" ? "rtl" : "ltr";
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
 
     const currentLang = document.querySelector(".current-lang");
+
     if (currentLang) {
         currentLang.textContent = {
             zh: "中",
@@ -119,42 +123,60 @@ function setLanguage(lang) {
         }[lang];
     }
 
-    document.querySelectorAll(".lang-option").forEach(option => {
+    document.querySelectorAll(".lang-option").forEach(function (option) {
         option.classList.toggle("active", option.dataset.lang === lang);
     });
 
     try {
         localStorage.setItem("preferredLang", lang);
     } catch (error) {
-        // The site still works if local storage is unavailable.
+        // Language switching still works without localStorage.
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const langToggle = document.querySelector(".lang-toggle");
-    const langMenu = document.querySelector(".lang-menu");
+function initializeLanguageMenu() {
+    const toggle = document.querySelector(".lang-toggle");
+    const menu = document.querySelector(".lang-menu");
 
-    if (langToggle && langMenu) {
-        langToggle.addEventListener("click", event => {
+    if (toggle && menu) {
+        toggle.addEventListener("click", function (event) {
             event.stopPropagation();
-            langMenu.classList.toggle("open");
+
+            const isOpen = menu.classList.toggle("open");
+            toggle.classList.toggle("active", isOpen);
+            toggle.setAttribute("aria-expanded", String(isOpen));
         });
 
-        langMenu.addEventListener("click", event => {
+        menu.addEventListener("click", function (event) {
             event.stopPropagation();
         });
 
-        document.addEventListener("click", () => {
-            langMenu.classList.remove("open");
+        document.addEventListener("click", function () {
+            menu.classList.remove("open");
+            toggle.classList.remove("active");
+            toggle.setAttribute("aria-expanded", "false");
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                menu.classList.remove("open");
+                toggle.classList.remove("active");
+                toggle.setAttribute("aria-expanded", "false");
+            }
         });
     }
 
-    document.querySelectorAll(".lang-option").forEach(option => {
-        option.addEventListener("click", () => {
+    document.querySelectorAll(".lang-option").forEach(function (option) {
+        option.addEventListener("click", function () {
             setLanguage(option.dataset.lang);
 
-            if (langMenu) {
-                langMenu.classList.remove("open");
+            if (menu) {
+                menu.classList.remove("open");
+            }
+
+            if (toggle) {
+                toggle.classList.remove("active");
+                toggle.setAttribute("aria-expanded", "false");
             }
         });
     });
@@ -164,17 +186,20 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
         savedLang = localStorage.getItem("preferredLang") || "zh";
     } catch (error) {
-        // Default to Chinese.
+        // Use Chinese as the default language.
     }
 
     setLanguage(savedLang);
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", event => {
-            const targetId = anchor.getAttribute("href");
-            const target = targetId
-                ? document.querySelector(targetId)
-                : null;
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener("click", function (event) {
+            const href = anchor.getAttribute("href");
+
+            if (!href || href === "#") {
+                return;
+            }
+
+            const target = document.querySelector(href);
 
             if (target) {
                 event.preventDefault();
@@ -182,5 +207,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-});
-```
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeLanguageMenu);
+} else {
+    initializeLanguageMenu();
+}
