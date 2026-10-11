@@ -1,143 +1,187 @@
-// 多语言翻译库
+```javascript
+// Xiangban Coffee — multilingual support
 const translations = {
     zh: {
-        siteTitle: "相伴咖啡",
+        siteTitle: "香伴咖啡",
         navHome: "首页",
-        navProducts: "产品",
-        navContact: "联系",
-        ctaCustom: "预约定制",
-        heroTitle: "为每一杯咖啡，注入匠心",
-        heroDesc: "自研手摇磨豆机 · 精密加工 · 个性化刻字 · 器具定制",
-        btnExplore: "探索作品",
-        btnCustom: "预约定制",
-        featuresTitle: "核心优势",
-        featuresSub: "每一台磨豆机，都是工艺与咖啡文化的结合",
-        feature1Title: "自研锥刀结构",
-        feature1Desc: "48mm 精密锥刀，均匀出粉，适配手冲、意式多种冲煮方式",
-        feature2Title: "全铝合金机身",
-        feature2Desc: "6061-T6 航空级铝合金，轻量化与质感并存，耐用性拉满",
-        feature3Title: "个性化刻字",
-        feature3Desc: "支持定制姓名、Logo 或特殊日期，打造专属咖啡器具",
-        feature4Title: "终身售后维护",
-        feature4Desc: "刀盘可替换、结构可保养，一台磨豆机陪你走过无数杯咖啡",
+        navCraft: "手作工艺",
+        navContact: "联系我们",
+        heroTitle: "手工磨豆机. 为咖啡注入温度",
+        heroDesc1: "每一台都由匠人手工装配调校，用时间打磨细节",
+        heroDesc2: "让咖啡的香气更纯粹",
+        btnExplore: "了解工艺",
+        btnCustom: "定制咨询",
+        featuresTitle: "手作匠心",
+        featuresSub: "拒绝流水线量产，坚持每一台都手工完成",
+        feature1Title: "手工研磨锥刀",
+        feature1Desc: "48mm高碳钢锥刀，手工开刃打磨，每一片刀刃都经过反复测试，研磨均匀细腻",
+        feature2Title: "微米级手工装配",
+        feature2Desc: "核心部件手工校准，公差控制在0.005毫米以内，运转顺滑无杂音，使用寿命更长",
+        feature3Title: "单台风味调校",
+        feature3Desc: "每台机器出厂前都经过实际冲煮测试，附带专属风味参数，到手即可享受好咖啡",
+        feature4Title: "全铝手工打磨机身",
+        feature4Desc: "6061-T6航空级铝合金，手工抛光打磨，触感温润，越用越有质感",
+        feature5Title: "专属定制刻字",
+        feature5Desc: "支持姓名、短句、Logo激光雕刻，打造独属于你的咖啡器具，也是心意满满的礼物",
+        feature6Title: "终身维护服务",
+        feature6Desc: "提供刀盘更换、机身保养、精度校准等终身服务，让你的磨豆机陪伴你更久",
         contactTitle: "联系我们",
-        contactSub: "有定制需求或产品咨询，随时和我们聊聊",
-        contactAddress: "工作室地址：广东顺德杏坛",
-        btnWechat: "微信联系",
-        copyright: "© 2024 相伴咖啡 | 手冲器具手作工作室"
+        contactSub: "有任何问题或定制需求，随时和我们聊聊",
+        contactAddress: "工作室：中国广东顺德",
+        copyright: "© 2024 香伴咖啡 | 手作咖啡器具工作室"
     },
+
     en: {
         siteTitle: "Xiangban Coffee",
         navHome: "Home",
-        navProducts: "Products",
+        navCraft: "Craftsmanship",
         navContact: "Contact",
-        ctaCustom: "Custom Order",
-        heroTitle: "Craftsmanship in Every Cup",
-        heroDesc: "Handcrafted Coffee Grinders · Precision Machining · Custom Engraving",
-        btnExplore: "Explore Works",
+        heroTitle: "Handcrafted Grinders. Warmth for Coffee",
+        heroDesc1: "Each grinder is assembled and calibrated by hand, polished with dedication",
+        heroDesc2: "Bring out the pure aroma of coffee",
+        btnExplore: "Our Craft",
         btnCustom: "Custom Order",
-        featuresTitle: "Core Advantages",
-        featuresSub: "Each grinder combines craftsmanship and coffee culture",
-        feature1Title: "Custom Conical Burr",
-        feature1Desc: "48mm precision burrs, ideal for pour-over & espresso",
-        feature2Title: "Full Aluminum Body",
-        feature2Desc: "6061-T6 aluminum, lightweight and durable",
-        feature3Title: "Custom Engraving",
-        feature3Desc: "Custom names, logos and exclusive designs",
-        feature4Title: "Lifetime Maintenance",
-        feature4Desc: "Replaceable parts for long-term use",
-        contactTitle: "Contact Us",
-        contactSub: "For custom orders & inquiries",
-        contactAddress: "Xingtan, Shunde, Guangdong",
-        btnWechat: "WeChat",
-        copyright: "© 2024 Xiangban Coffee | Handcrafted Coffee Tools"
+        featuresTitle: "Artisan Craft",
+        featuresSub: "No mass production, every piece is made by hand",
+        feature1Title: "Hand-ground Burrs",
+        feature1Desc: "48mm high-carbon steel burrs, hand-sharpened and tested for uniform, consistent grinding",
+        feature2Title: "Micron-precision Assembly",
+        feature2Desc: "Core parts calibrated by hand, tolerance within 0.005mm, smooth operation and long life",
+        feature3Title: "Individual Flavor Tuning",
+        feature3Desc: "Each unit tested with actual brewing, comes with personalized flavor settings",
+        feature4Title: "Hand-polished Aluminum Body",
+        feature4Desc: "6061-T6 aerospace aluminum, hand-polished for a warm, tactile feel that ages beautifully",
+        feature5Title: "Personalized Engraving",
+        feature5Desc: "Custom names, quotes or logos available, perfect for personal use or thoughtful gifts",
+        feature6Title: "Lifetime Care",
+        feature6Desc: "Burr replacement, maintenance and calibration services available for life",
+        contactTitle: "Get in Touch",
+        contactSub: "Have questions or want a custom grinder? We'd love to hear from you",
+        contactAddress: "Studio: Shunde, Guangdong, China",
+        copyright: "© 2024 Xiangban Coffee | Handcrafted Coffee Tools Studio"
     },
+
     ar: {
-        siteTitle: "قهوة شيانبان",
+        siteTitle: "قهوة شيانجبان",
         navHome: "الرئيسية",
-        navProducts: "المنتجات",
+        navCraft: "الحرف اليدوية",
         navContact: "اتصل بنا",
-        ctaCustom: "طلب مخصص",
-        heroTitle: "حرفية في كل كوب",
-        heroDesc: "طاحونات قهوة يدوية · تصنيع دقيق · نقش مخصص",
-        btnExplore: "استكشف",
+        heroTitle: "مطاحن يدوية. دفء للقهوة",
+        heroDesc1: "كل مطحنة تُجمّع وتُعاير يدوياً بعناية فائقة",
+        heroDesc2: "لتُبرز رائحة القهوة النقية",
+        btnExplore: "حرفتنا",
         btnCustom: "طلب مخصص",
-        featuresTitle: "المميزات",
-        featuresSub: "طاحونات تجمع بين الحرفية وثقافة القهوة",
-        feature1Title: "أسنان مخروطية دقيقة",
-        feature1Desc: "طاحونة 48 مم مناسبة لجميع أنواع القهوة",
-        feature2Title: "جسم ألومنيوم متين",
-        feature2Desc: "ألومنيوم عالي الجودة خفيف وطويل الأمد",
-        feature3Title: "نقش وتصميم مخصص",
-        feature3Desc: "أسماء وشعارات وتصاميم فريدة",
-        feature4Title: "صيانة مدى الحياة",
-        feature4Desc: "قطع غيار قابلة للاستبدال",
-        contactTitle: "اتصل بنا",
-        contactSub: "للطلبات والاستفسارات",
-        contactAddress: "شينتان، شنده، قوانغدونغ",
-        btnWechat: "ويتشات",
-        copyright: "© 2024 قهوة شيانبان"
+        featuresTitle: "حرفية فنية",
+        featuresSub: "لا إنتاج جماعي، كل قطعة مصنوعة يدوياً",
+        feature1Title: "سنون مطحونة يدوياً",
+        feature1Desc: "سنون فولاذ عالي الكربون مقاس 48 مم، مصقولة ومختبرة يدوياً لطحن متجانس ومستمر",
+        feature2Title: "تجميع دقيق ميكروني",
+        feature2Desc: "الأجزاء الأساسية معايرة يدوياً، تفاوت أقل من 0.005 مم، تشغيل سلس وعمر طويل",
+        feature3Title: "معايرة نكهة فردية",
+        feature3Desc: "كل جهاز يتم اختباره بالتحضير الفعلي، يأتي مع إعدادات نكهة مخصصة",
+        feature4Title: "جسم ألومنيوم مصقول يدوياً",
+        feature4Desc: "ألومنيوم 6061-T6، مصقول يدوياً لمسة دافئة تتحسن مع الوقت",
+        feature5Title: "نقش شخصي",
+        feature5Desc: "نقش الأسماء أو الشعارات متاح، مثالي للاستخدام الشخصي أو الهدايا",
+        feature6Title: "رعاية مدى الحياة",
+        feature6Desc: "خدمات استبدال السنون والصيانة والمعايرة متاحة مدى الحياة",
+        contactTitle: "تواصل معنا",
+        contactSub: "لديك أسئلة أو تريد مطحنة مخصصة؟ يسعدنا سماعك",
+        contactAddress: "الاستوديو: شوند، قوانغدونغ، الصين",
+        copyright: "© 2024 قهوة شيانجبان | استوديو أدوات القهوة المصنوعة يدوياً"
     }
 };
 
-// 切换语言函数
 function setLanguage(lang) {
-    // 更新所有带 data-i18n 属性的文本
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (
-    translations[lang] &&
-    Object.hasOwn(translations[lang], key)
-) {
-    el.textContent = translations[lang][key];
+    if (!Object.prototype.hasOwnProperty.call(translations, lang)) {
+        lang = "zh";
+    }
+
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+
+        if (Object.prototype.hasOwnProperty.call(translations[lang], key)) {
+            el.textContent = translations[lang][key];
+        }
+    });
+
+    document.documentElement.lang =
+        lang === "zh" ? "zh-CN" : lang;
+
+    document.documentElement.dir =
+        lang === "ar" ? "rtl" : "ltr";
+
+    const currentLang = document.querySelector(".current-lang");
+    if (currentLang) {
+        currentLang.textContent = {
+            zh: "中",
+            en: "EN",
+            ar: "ع"
+        }[lang];
+    }
+
+    document.querySelectorAll(".lang-option").forEach(option => {
+        option.classList.toggle("active", option.dataset.lang === lang);
+    });
+
+    try {
+        localStorage.setItem("preferredLang", lang);
+    } catch (error) {
+        // The site still works if local storage is unavailable.
+    }
 }
-    });
 
-    // 更新HTML语言和方向（阿拉伯语自动右到左）
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+document.addEventListener("DOMContentLoaded", () => {
+    const langToggle = document.querySelector(".lang-toggle");
+    const langMenu = document.querySelector(".lang-menu");
 
-    // 更新下拉按钮上的当前语言显示
-    const langNames = { zh: '中', en: 'EN', ar: 'ع' };
-    document.querySelector('.current-lang').textContent = langNames[lang];
+    if (langToggle && langMenu) {
+        langToggle.addEventListener("click", event => {
+            event.stopPropagation();
+            langMenu.classList.toggle("open");
+        });
 
-    // 更新选中状态
-    document.querySelectorAll('.lang-option').forEach(opt => {
-        opt.classList.toggle('active', opt.dataset.lang === lang);
-    });
+        langMenu.addEventListener("click", event => {
+            event.stopPropagation();
+        });
 
-    // 保存用户选择到本地存储
-    localStorage.setItem('preferredLang', lang);
-}
+        document.addEventListener("click", () => {
+            langMenu.classList.remove("open");
+        });
+    }
 
-// 页面加载完成后再绑定所有事件
-document.addEventListener('DOMContentLoaded', () => {
-    // 获取所有下拉菜单元素
-    const langToggle = document.querySelector('.lang-toggle');
-    const langMenu = document.querySelector('.lang-menu');
-    const langOptions = document.querySelectorAll('.lang-option');
+    document.querySelectorAll(".lang-option").forEach(option => {
+        option.addEventListener("click", () => {
+            setLanguage(option.dataset.lang);
 
-    // 切换下拉菜单显示/隐藏
-    langToggle.addEventListener('click', (e) => {
-        e.stopPropagation(); // 阻止事件冒泡
-        langMenu.classList.toggle('open');
-    });
-
-    // 点击页面其他地方关闭下拉菜单
-    document.addEventListener('click', () => {
-        langMenu.classList.remove('open');
-    });
-
-    // 绑定语言选项点击事件
-    langOptions.forEach(option => {
-        option.addEventListener('click', () => {
-            const lang = option.dataset.lang;
-            setLanguage(lang);
-            langMenu.classList.remove('open'); // 切换后自动关闭菜单
+            if (langMenu) {
+                langMenu.classList.remove("open");
+            }
         });
     });
 
-    // 初始化语言：读取本地存储或默认中文
-    const savedLang = localStorage.getItem('preferredLang') || 'zh';
+    let savedLang = "zh";
+
+    try {
+        savedLang = localStorage.getItem("preferredLang") || "zh";
+    } catch (error) {
+        // Default to Chinese.
+    }
+
     setLanguage(savedLang);
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", event => {
+            const targetId = anchor.getAttribute("href");
+            const target = targetId
+                ? document.querySelector(targetId)
+                : null;
+
+            if (target) {
+                event.preventDefault();
+                target.scrollIntoView({ behavior: "smooth" });
+            }
+        });
+    });
 });
+```
