@@ -1,4 +1,3 @@
-```javascript
 // Xiangban Coffee — multilingual support
 const translations = {
     zh: {
