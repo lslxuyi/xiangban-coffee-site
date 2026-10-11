@@ -24,7 +24,7 @@ const translations = {
         contactSub: "有定制需求或产品咨询，随时和我们聊聊",
         contactAddress: "工作室地址：广东顺德杏坛",
         btnWechat: "微信联系",
-        copyright: "&copy; 2024 相伴咖啡 | 手冲器具手作工作室"
+        copyright: "© 2024 相伴咖啡 | 手冲器具手作工作室"
     },
     en: {
         siteTitle: "Xiangban Coffee",
@@ -50,7 +50,7 @@ const translations = {
         contactSub: "For custom orders & inquiries",
         contactAddress: "Xingtan, Shunde, Guangdong",
         btnWechat: "WeChat",
-        copyright: "&copy; 2024 Xiangban Coffee | Handcrafted Coffee Tools"
+        copyright: "© 2024 Xiangban Coffee | Handcrafted Coffee Tools"
     },
     ar: {
         siteTitle: "قهوة شيانبان",
@@ -76,7 +76,7 @@ const translations = {
         contactSub: "للطلبات والاستفسارات",
         contactAddress: "شينتان، شنده، قوانغدونغ",
         btnWechat: "ويتشات",
-        copyright: "&copy; 2024 قهوة شيانبان"
+        copyright: "© 2024 قهوة شيانبان"
     }
 };
 
@@ -85,9 +85,12 @@ function setLanguage(lang) {
     // 更新所有带 data-i18n 属性的文本
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-            el.innerHTML = translations[lang][key];
-        }
+        if (
+    translations[lang] &&
+    Object.hasOwn(translations[lang], key)
+) {
+    el.textContent = translations[lang][key];
+}
     });
 
     // 更新HTML语言和方向（阿拉伯语自动右到左）
